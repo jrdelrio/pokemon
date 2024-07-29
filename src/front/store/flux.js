@@ -14,23 +14,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-        removeFavorite: (name) => {
-          const store = getStore();
-          setStore({ favorites: store.favorites.filter((fav) => fav !== name) });
-          console.log(`Removed ${name} from favorites!`);
-        }
-      // setSearchBar: (searchBar) => {
-      //   setStore({ searchBar: searchBar });
-      // }
+      removeFavorite: (name) => {
+        const store = getStore();
+        setStore({ favorites: store.favorites.filter((fav) => fav !== name) });
+        console.log(`Removed ${name} from favorites!`);
+      },
 
-      // addFavorite: (name) => {
-      //     const store = getStore();
-      //     if (!store.favorites.includes(name)) {
-      //       setStore({ favorites: [...store.favorites, name] });
-      //       console.log(`Added ${name} to favorites!`);
-      //     }
-      //   },
-
+      setSearchBar: (e) => {
+        const string = e.target.value;
+        setStore({ searchBar: string });
+      },
     },
   };
 };

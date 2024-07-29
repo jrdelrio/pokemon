@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import logo from "../img/pokemon-logo.png";
 import Card from "../components/Card";
+import { AppContext } from '../store/appContext';
 
 const Home = () => {
     const [pokemonList, setPokemonList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const { store, actions } = useContext(AppContext);
+
 
     useEffect(() => {
         const requestOptions = {
@@ -26,6 +30,9 @@ const Home = () => {
                 setLoading(false);
             });
     }, []);
+
+    // filtro la lista que se mapeará, y solo se mostrarán los pokemones que tengas el string store.searchBar en su nombre
+    const filteredPokemonList = pokemonList.filter((pokemon) => pokemon.name.toLowerCase().includes(store.searchBar.toLowerCase()))
 
     const styles = {
         wrapperStyle : {
@@ -67,7 +74,7 @@ const Home = () => {
             <img style={styles.logoStyle} src={logo} alt="Pokémon Logo" />
             <Navbar />
             <div style={styles.containerStyle}>
-                {pokemonList.map((pokemon, index) => (
+                {filteredPokemonList.map((pokemon, index) => (
                     <div key={index} style={styles.cardContainerStyle}>
                         <Card name={pokemon.name} />
                     </div>
