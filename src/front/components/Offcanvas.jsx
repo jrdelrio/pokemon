@@ -7,6 +7,7 @@ export const Offcanvas = () => {
     const { store, actions } = useContext(AppContext);
 
     const styles = {
+        
     }
 
     return (
