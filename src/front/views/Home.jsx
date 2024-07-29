@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import logo from "../img/pokemon-logo.png";
 import Card from "../components/Card";
 import { AppContext } from '../store/appContext';
+import FavoriteButton from "../components/FavoriteButton";
 
 const Home = () => {
     const [pokemonList, setPokemonList] = useState([]);
@@ -35,30 +36,30 @@ const Home = () => {
     const filteredPokemonList = pokemonList.filter((pokemon) => pokemon.name.toLowerCase().includes(store.searchBar.toLowerCase()))
 
     const styles = {
-        wrapperStyle : {
+        wrapperStyle: {
             padding: '20px',
             textAlign: 'center'
         },
 
-        logoStyle : {
+        logoStyle: {
             width: '200px',
             marginBottom: '0'
         },
 
-        containerStyle : {
+        containerStyle: {
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center'
         },
 
-        cardContainerStyle : {
+        cardContainerStyle: {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             flex: '1 1 50%',
             boxSizing: 'border-box',
             padding: '10px'
-        }
+        },
     };
 
     if (loading) {
@@ -71,8 +72,24 @@ const Home = () => {
 
     return (
         <div style={styles.wrapperStyle}>
+
+            < FavoriteButton style={styles.favButtonStyle}/>
+
             <img style={styles.logoStyle} src={logo} alt="Pokémon Logo" />
             <Navbar />
+
+
+
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p>Try scrolling the rest of the page to see this option in action.</p>
+                </div>
+            </div>
+
             <div style={styles.containerStyle}>
                 {filteredPokemonList.map((pokemon, index) => (
                     <div key={index} style={styles.cardContainerStyle}>
@@ -80,6 +97,8 @@ const Home = () => {
                     </div>
                 ))}
             </div>
+
+
         </div>
     );
 };
