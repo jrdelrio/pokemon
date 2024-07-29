@@ -4,8 +4,6 @@ import { AppContext } from '../store/appContext';
 
 const FavoriteButton = (props) => {
 
-    console.log(props)
-
     const { store, actions } = useContext(AppContext);
 
     const styles = {
