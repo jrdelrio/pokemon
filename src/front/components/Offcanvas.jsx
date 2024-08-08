@@ -11,18 +11,18 @@ export const Offcanvas = () => {
     }
 
     return (
-        <div class="offcanvas offcanvas-start w-75"
+        <div className="offcanvas offcanvas-start w-75"
             data-bs-scroll="true"
             data-bs-backdrop="false"
-            tabindex="-1" id="offcanvasScrolling"
+            tabIndex="-1" id="offcanvasScrolling"
             aria-labelledby="offcanvasScrollingLabel"
             styles={styles.offcanvasStyle}
         >
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Favorites Pokémons</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div className="offcanvas-header">
+                <h5 className="offcanvas-title" id="offcanvasScrollingLabel">Favorites Pokémons</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div className="offcanvas-body">
                 {store.favorites.map((pokemon, index) => <FavoriteCard key={pokemon.index} name={pokemon}/>)}
             </div>
         </div>

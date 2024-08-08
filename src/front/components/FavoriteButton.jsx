@@ -17,7 +17,7 @@ const FavoriteButton = (props) => {
         },
 
         favButtonStyle: {
-            'background-color': 'transparent',
+            backgroundColor: 'transparent',
             border: 'transparent',
             float: 'right',
             position: 'absolute'
@@ -27,15 +27,15 @@ const FavoriteButton = (props) => {
     return (
         <button
             type="button"
-            class="btn btn-primary position-relative"
+            className="btn btn-primary position-relative"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasScrolling"
             aria-controls="offcanvasScrolling"
             style={styles.favButtonStyle}>
             <i className="fa-regular fa-heart" style={styles.favButtonIconStyle}></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {store.favorites.length}
-                <span class="visually-hidden">Favoritess</span>
+                <span className="visually-hidden">Favoritess</span>
             </span>
         </button>
     )

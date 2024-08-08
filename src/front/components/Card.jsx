@@ -33,6 +33,7 @@ const Card = (props) => {
     const styles = {
         cardStyle: {
             width: '100%',
+            maxWidth: '170px',
         },
         cardBodyStyle: {
             padding: "10px"

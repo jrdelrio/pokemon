@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import { AppContext } from '../store/appContext';
 import FavoriteButton from "../components/FavoriteButton";
 import { Offcanvas } from "../components/Offcanvas";
+import '../styles/home.css';
 
 const Home = () => {
     const [pokemonList, setPokemonList] = useState([]);
@@ -36,60 +37,27 @@ const Home = () => {
     // filtro la lista que se mapeará, y solo se mostrarán los pokemones que tengas el string store.searchBar en su nombre
     const filteredPokemonList = pokemonList.filter((pokemon) => pokemon.name.toLowerCase().includes(store.searchBar.toLowerCase()))
 
-    const styles = {
-        wrapperStyle: {
-            padding: '20px',
-            textAlign: 'center'
-        },
-
-        logoStyle: {
-            width: '200px',
-            marginBottom: '0'
-        },
-
-        containerStyle: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center'
-        },
-
-        cardContainerStyle: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            flex: '1 1 50%',
-            boxSizing: 'border-box',
-            padding: '10px'
-        },
-    };
-
     if (loading) {
-        return <div style={styles.wrapperStyle}>Loading...</div>;
+        return <div className='wrapper'>Loading...</div>;
     }
 
     if (error) {
-        return <div style={styles.wrapperStyle}>Error: {error.message}</div>;
+        return <div className='wrapper'>Error: {error.message}</div>;
     }
 
     return (
-        <div style={styles.wrapperStyle}>
-
+        <div className="wrapper">
             < FavoriteButton />
-
-            <img style={styles.logoStyle} src={logo} alt="Pokémon Logo" />
+            <img className="logo" src={logo} alt="Pokémon Logo" />
             <Navbar />
-
             < Offcanvas />
-
-            <div style={styles.containerStyle}>
+            <div className="container">
                 {filteredPokemonList.map((pokemon, index) => (
-                    <div key={index} style={styles.cardContainerStyle}>
+                    <div key={index} className="card-container">
                         <Card name={pokemon.name} />
                     </div>
                 ))}
             </div>
-
-
         </div>
     );
 };

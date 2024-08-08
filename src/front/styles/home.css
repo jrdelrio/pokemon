@@ -1,0 +1,41 @@
+/* Home.css */
+.wrapper {
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-container {
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: -webkit-center;
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .card-container {
+        flex: 1 1 33.33%;
+    }
+}
+
+/* Desktops */
+@media (min-width: 1024px) {
+    .wrapper {
+        margin: 0 20vw
+    }
+
+    .card-container {
+        flex: 1 1 20%;
+    }
+}
